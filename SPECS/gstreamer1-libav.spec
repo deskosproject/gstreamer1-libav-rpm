@@ -1,6 +1,6 @@
 Name:           gstreamer1-libav
 Version:        1.0.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        GStreamer 1.0 libav-based plug-ins
 Group:          Applications/Multimedia
 License:        LGPLv2+
@@ -41,8 +41,8 @@ mv libav-0.8.6 gst-libs/ext/libav
 # Note no --with-system-ffmpeg *for now*, as gst-ffmpeg wants libav-0.8,
 # and the system ffmpeg is 0.11, which is more or less libav-0.9
 %configure --disable-dependency-tracking --disable-static \
-  --with-package-name="gst-libav 1.0 rpmfusion rpm" \
-  --with-package-origin="http://rpmfusion.org/" \
+  --with-package-name="DeskOS GStreamer-libav package" \
+  --with-package-origin="https://deskosproject.org/" \
   --with-libav-extra-configure="--enable-runtime-cpudetect --arch=%{_target_cpu} --optflags=\\\"\\\$RPM_OPT_FLAGS\\\""
 make %{?_smp_mflags} V=1
 
@@ -59,6 +59,9 @@ rm $RPM_BUILD_ROOT%{_libdir}/gstreamer-1.0/libgst*.la
 
 
 %changelog
+* Thu Nov 17 2016 Ricardo Arguello <rarguello@deskosproject.org> - 1.0.6-2
+- Rebuilt for DeskOS
+
 * Mon Mar 25 2013 Hans de Goede <j.w.r.degoede@gmail.com> - 1.0.6-1
 - Rebase to 1.0.6
 - Upgrade the buildin libav to 0.8.6 to get all the security fixes from
